@@ -1,4 +1,4 @@
-# Homework 33 — Gulp Automation Project
+# [Homework 33 — Gulp Automation Project](https://alexanderik79.github.io/home-work-33/src/)
 
 This [project](https://alexanderik79.github.io/home-work-33/src/) demonstrates the use of **Gulp** to automate common frontend development tasks.
 
