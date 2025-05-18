@@ -1,6 +1,7 @@
 # Homework 33 — Gulp Automation Project
 
-This project demonstrates the use of **Gulp** to automate common frontend development tasks.
+This [project](https://alexanderik79.github.io/home-work-33/src/) demonstrates the use of **Gulp** to automate common frontend development tasks.
+
 
 ## Features
 
