@@ -16,11 +16,12 @@ const paths = {
     dest: 'dist/css'
   },
   html: {
-    src: 'src/**/*.html'
+    src: 'src/**/*.html',
+    dest: './'  // Копируем в корень проекта
   }
 };
 
-// SCSS -> CSS
+// Компиляция SCSS -> CSS
 export function styles() {
   return gulp.src(paths.scss.src)
     .pipe(plumber())
@@ -33,16 +34,28 @@ export function styles() {
     .pipe(bs.stream());
 }
 
-// Live reload
+// Копирование HTML в корень проекта
+export function copyHtml() {
+  return gulp.src(paths.html.src)
+    .pipe(gulp.dest(paths.html.dest))
+    .pipe(bs.stream());
+}
+
+// Сервер с live reload из корня проекта
 export function serve() {
   bs.init({
     server: {
-      baseDir: 'src'
+      baseDir: './'  // Запускаем сервер из корня
     }
   });
 
   gulp.watch(paths.scss.src, styles);
-  gulp.watch(paths.html.src).on('change', bs.reload);
+  gulp.watch(paths.html.src, copyHtml);
+  gulp.watch(paths.html.dest + '/*.html').on('change', bs.reload);
 }
 
-export default gulp.series(styles, serve);
+// Запуск тасков
+export default gulp.series(
+  gulp.parallel(styles, copyHtml),
+  serve
+);
